@@ -1,0 +1,64 @@
+.nav {
+    border-bottom: 1px solid rgba(120, 120, 120, 0.609);
+    margin-top: 2vh;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 2vh;
+    font-size: 1.5vh;
+}
+.nav h1 {
+    text-align: left;
+}
+.nav span {
+    text-align: left;
+    font-size: 1.2vh;
+    font-style: italic;
+}
+.nav ul {
+    list-style-type: none;
+    padding: 0 2vw 0 2vw;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px;
+}
+.nav ul div {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 65vw;
+}
+.nav ul div li {
+    margin-right: 3vw;
+}
+.nav ul div li:hover {
+    border-bottom: 3px solid darkblue;
+}
+.nav ul div li:active {
+    border-bottom: 3px solid darkblue;
+}
+.nav ul div:nth-child(2) {
+    margin-right: 0;
+    display: block;
+    width: 30vw;
+}
+.nav ul div:nth-child(2) li {
+    margin-right: 0;
+    float: right;
+    margin-left: 1.5vw;
+}
+.nav ul div:nth-child(2) li:hover {
+    border-bottom: none;
+}
+.nav ul div:nth-child(2) li:active {
+    border-bottom: none;
+}
+.nav ul div:nth-child(2) .user-avatar {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background: url("https://www.w3schools.com/howto/img_avatar2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

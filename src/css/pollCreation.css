@@ -1,0 +1,57 @@
+.poll-creation-container {
+    text-align: center;
+}
+.poll-creation-container .poll-creation-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.poll-creation-info .option-create-container {
+    display: flex;
+    flex-direction: row;
+}
+.option-create-container form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    padding: 0;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 7px;
+}
+.option-create-container form textarea {
+    border-radius: 4px;
+    margin-top: 1vh;
+    width: 95%;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    height: 12vh;
+    padding: 1vw;
+}
+.option-create-container form p {
+    text-align: right;
+    margin-top: 0;
+    align-self: flex-end;
+    margin-right: 10px;
+    font-size: 1.5vh;
+}
+.option-create-container form input {
+    background-color: rgb(116, 116, 255);
+    color: white;
+    border: 2px solid rgb(3, 17, 121);
+    border-radius: 3px;
+    width: 50%;
+    height: 4vh;
+}
+.option-create-container form input:hover {
+    background-color: rgb(11, 11, 116);
+    color: white;
+    border: 2px solid rgb(167, 167, 168);
+    border-radius: 3px;
+}

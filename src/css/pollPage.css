@@ -1,0 +1,77 @@
+.poll-page-container {
+    text-align: center;
+}
+.poll-page-container .poll-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.poll-info .poll-owner-image {
+    width: 20vw;
+    height: 20vw;
+    background: url("https://airnfts.s3.amazonaws.com/profile-images/0xD9c4216cFE7c70344f80035B0bf5FBE01AA69d37_1619305985184.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0.2vw 0.2vw 3vw #1747f6c1;
+    border: 3px solid white;
+    margin-bottom: 5vw;
+}
+.poll-info .option-container {
+    display: flex;
+    flex-direction: row;
+}
+.option-container form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    padding: 0;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 7px;
+    text-align: center;
+}
+.option-container form label {
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+}
+.option-container form label div {
+    margin: 15px;
+    
+}
+.option-container form input {
+    background-color: rgb(116, 116, 255);
+    color: white;
+    border: 2px solid rgb(3, 17, 121);
+    border-radius: 3px;
+    width: 50%;
+    height: 3vh;
+    text-align: center;
+}
+.option-container form input:hover {
+    background-color: rgb(11, 11, 116);
+    color: white;
+    border: 2px solid rgb(167, 167, 168);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.option-container form input:disabled {
+    background-color: rgb(197, 197, 197);
+    color: rgb(32, 32, 32);
+    border: 2px solid rgb(129, 129, 131);
+    border-radius: 3px;
+    width: 50%;
+    height: 3vh;
+    text-align: center;
+}

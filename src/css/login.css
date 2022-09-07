@@ -1,0 +1,51 @@
+.login-container {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-container h1 {
+    margin-bottom: 5vw;
+}
+.login-container .login-image {
+    width: 30vw;
+    height: 30vw;
+    background: url("https://thumbs.dreamstime.com/b/select-179491451.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0.2vw 0.2vw 3vw #7700ff97;
+    margin-bottom: 5vw;
+}
+.login-container h4 {
+    margin-bottom: 1vw;
+}
+.login-container .login-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.login-container input {
+    margin-bottom: 1.5vw;
+    height: 4vh;
+}
+.login-container .submit-btn {
+    background-color: rgb(116, 116, 255);
+    color: white;
+    border: 2px solid rgb(3, 17, 121);
+    border-radius: 3px;
+}
+.login-container .submit-btn:hover {
+    background-color: rgb(11, 11, 116);
+    color: white;
+    border: 2px solid rgb(167, 167, 168);
+    border-radius: 3px;
+}
+.login-container .submit-btn:disabled {
+    background-color: rgb(156, 156, 156);
+    color: rgb(69, 69, 69);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 3px;
+}

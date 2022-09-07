@@ -1,0 +1,16 @@
+@import "./login.css";
+@import "./nav.css";
+@import "./pollPage.css";
+@import "./pollCreation.css";
+@import "./leaderboard.css";
+@import "./dashboard.css";
+@import "./questionCard.css";
+
+body {
+    background-color: rgba(0, 162, 255, 0.079);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #252525;
+}

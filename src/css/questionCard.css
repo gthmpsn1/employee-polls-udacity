@@ -1,0 +1,21 @@
+.question-card-container {
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+    font-size: 1.3vh;
+    text-align: center;
+    padding: 5px;
+}
+.question-card-container div:nth-child(1) {
+    font-size: 1.5;
+    font-weight: bold;
+}
+.question-card-container .show-poll-btn {
+    background-color: rgb(116, 116, 255);
+    color: white;
+    border: 2px solid rgb(3, 17, 121);
+    border-radius: 3px;
+    width: 70%;
+    margin: 7px 15% 3px 15%;
+    padding: 3px 0 3px 0;
+}
