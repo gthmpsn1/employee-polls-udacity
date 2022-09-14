@@ -9,7 +9,7 @@ import PollCreation from "./PollCreation";
 import PollPage from "./PollPage";
 
 const App = (props) => {
-  const loggedIn = true;
+  const isLoggedIn = props.isLoggedIn;
 
   useEffect(() => {
     props.dispatch(handleInitialData());
@@ -18,22 +18,25 @@ const App = (props) => {
   return (
       <Fragment>
         <div className="app-container">
-          {props.loading === true ? <p>Loading...</p> : (
-            <Routes>
-              <Route exact path="/" element={!loggedIn ? <Navigate to="/login" /> : <Dashboard />} />
-              <Route path="/leaderboard" element={!loggedIn ? <Navigate to="/login" /> : <Leaderboard />} />
+          {isLoggedIn !== true 
+            ? (<Routes>
+                <Route path="/" element={<Login />} />
+              </Routes>)
+            : (<Routes>
+              <Route exact path="/" element={<Dashboard />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/new-poll" element={!loggedIn ? <Navigate to="/login" /> : <PollCreation />} />
-              <Route path="/poll/:status/:id" element={!loggedIn ? <Navigate to="/login" /> : <PollPage />} />
-            </Routes>
-          )}
+              <Route path="/new-poll" element={<PollCreation />} />
+              <Route path="/poll/:status/:id" element={<PollPage />} />
+            </Routes>)
+          }
         </div>
       </Fragment>
   )
 };
 
 const mapStateToProps = ({authedUser}) => ({
-  loading: authedUser === null,
+  isLoggedIn: authedUser !== null,
 });
   
 export default connect(mapStateToProps)(App);

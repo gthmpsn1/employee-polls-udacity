@@ -55,3 +55,9 @@
     border: 2px solid rgb(167, 167, 168);
     border-radius: 3px;
 }
+.option-create-container form input:disabled {
+    background-color: rgb(156, 156, 156);
+    color: rgb(69, 69, 69);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 3px;
+}

@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+import { handleCreatePoll } from "../actions/questions";
 
 import Nav from "./Nav";
 
-const PollCreation = () => {
+const PollCreation = (props) => {
     const [textArea1, setTextArea1] = useState("");
     const [textArea2, setTextArea2] = useState("");
+    const {user, dispatch} = props;
 
     const updateTextArea1 = (textArea1) => {
         setTextArea1(textArea1);
@@ -12,6 +15,18 @@ const PollCreation = () => {
     const updateTextArea2 = (textArea2) => {
         setTextArea2(textArea2);
     };
+
+    const handleNewPoll = (e) => {
+        e.preventDefault();
+        const info = {
+            textArea1,
+            textArea2,
+            user
+        };
+        dispatch(handleCreatePoll(info));
+        setTextArea1("");
+        setTextArea2("");
+    } 
 
     return (
         <div className="poll-creation-container">
@@ -37,7 +52,7 @@ const PollCreation = () => {
                             placeholder="Enter option #2" >
                         </textarea>
                         <p>{textArea2.length}/250</p>
-                        <input type="submit" value="Creat Poll" />
+                        <input type="submit" onClick={handleNewPoll} value="Creat Poll" disabled={textArea1 === "" || textArea2 === ""} />
                     </form>
                 </div>
             </div>
@@ -45,4 +60,9 @@ const PollCreation = () => {
     )
 }
 
-export default PollCreation;
+const mapStateToProps = ({authedUser, dispatch}) => ({
+    dispatch: dispatch,
+    user: authedUser
+})
+
+export default connect(mapStateToProps)(PollCreation);

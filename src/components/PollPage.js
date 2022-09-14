@@ -9,8 +9,10 @@ const PollPage = (props) => {
     const questions = Object.values(props.questions);
     const question = questions.find((q) => q.id === questionID.id)
     const authedUser = props.authedUser;
+    const users = props.users;
     const status = questionID.status;
-    
+    const dispatch = props.dispatch;
+
     const [didVote1, setDidVote1] = useState({});
     const [didVote2, setDidVote2] = useState({});
 
@@ -31,20 +33,20 @@ const PollPage = (props) => {
     }
 
     const recordVote = (vote) => {
-        const {dispatch, authedUser} = props;
-        dispatch(handleVote({
-            id: questionID.id,
-            authedUser,
-            vote
-        }))
+        let info = {
+            authedUser: authedUser,
+            vote: vote,
+            qID: questionID.id
+        }
+        dispatch(handleVote(info))
     }
 
     return (
         <div className="poll-page-container">
             <Nav />
             <div className="poll-info">
-                <h5>Poll by {question.author}</h5>
-                <div className="poll-owner-image"></div>
+                <h5>Poll by {users[question.author].name}</h5>
+                <div className="poll-owner-image" style={{backgroundImage: `url(${users[question.author].avatarURL})`}}></div>
                 <h3>Would you rather...</h3>
                 <div className="option-container">
                     <form>
@@ -83,11 +85,12 @@ const PollPage = (props) => {
     )
 }
 
-const mapStateToProps = ({questions, authedUser, dispatch}) => ({
+const mapStateToProps = ({questions, authedUser, dispatch, users}) => ({
     questions: questions,
     authedUser: authedUser,
     dispatch: dispatch,
     loading: authedUser === null,
+    users: users
 })
 
 export default connect(mapStateToProps)(PollPage);

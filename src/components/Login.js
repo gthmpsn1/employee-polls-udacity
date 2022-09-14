@@ -20,17 +20,15 @@ const Login = (props) => {
     }
 
     const attemptSignIn = (e) => {
-        Object.keys(users).forEach((user) => {
-            if (user === userNameInput && users[user].password === passwordInput) {
-                e.preventDefault();
-                dispatch(setAuthedUser(user.id));
-                setPasswordInput("");
-                setUserNameInput("");
-                navigate("/");
-            } else {
-                alert("Enter valid login information");
-            }
-        })                
+        e.preventDefault();
+        if (userNameInput in users) {
+            dispatch(setAuthedUser(userNameInput));
+            setPasswordInput("");
+            setUserNameInput("");
+            navigate("/");
+        } else {
+            alert("Enter valid login information");
+        }                
     }
 
 

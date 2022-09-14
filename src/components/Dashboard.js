@@ -5,6 +5,7 @@ import QuestionCard from "./QuestionCard";
 const Dashboard = (props) => {
     const expireTime = (Date.now() - 31556926000);
     const questions = Object.values(props.questions);
+    const users = props.users;
 
     return (
         <div className="dashboard-container">
@@ -16,7 +17,7 @@ const Dashboard = (props) => {
                     <div className="question-grid">
                         {questions.map((question) => (
                             question.timestamp > expireTime
-                                && <QuestionCard key={question.id} question={question} status={"open"} />
+                                && <QuestionCard key={question.id} question={question} status={"open"} author={users[question.author].name} />
                         ))}
                     </div>
                 </div>
@@ -25,7 +26,7 @@ const Dashboard = (props) => {
                     <div className="question-grid">
                         {questions.map((question) => (
                             question.timestamp < expireTime
-                                && <QuestionCard key={question.id} question={question} status={"closed"} />
+                                && <QuestionCard key={question.id} question={question} status={"closed"} author={users[question.author].name} />
                         ))}
                     </div>
                 </div>
@@ -34,8 +35,9 @@ const Dashboard = (props) => {
     )
 }
 
-const mapStateToProps = ({questions}) => ({
-    questions: questions
+const mapStateToProps = ({questions, users}) => ({
+    questions: questions,
+    users: users
 })
 
 export default connect(mapStateToProps)(Dashboard);

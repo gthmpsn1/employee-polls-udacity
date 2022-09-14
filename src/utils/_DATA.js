@@ -3,7 +3,7 @@ let users = {
       id: 'sarahedo',
       password:'password123',
       name: 'Sarah Edo',
-      avatarURL: null,
+      avatarURL: "https://cdn-icons-png.flaticon.com/512/194/194938.png",
       answers: {
         "8xf0y6ziyjabvozdd253nd": 'optionOne',
         "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -16,7 +16,7 @@ let users = {
       id: 'tylermcginnis',
       password:'abc321',
       name: 'Tyler McGinnis',
-      avatarURL: null,
+      avatarURL: "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-Clipart.png",
       answers: {
         "vthrdm985a262al8qx3do": 'optionOne',
         "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
       id: 'mtsamis',
       password:'xyz123',
       name: 'Mike Tsamis',
-      avatarURL: null,
+      avatarURL: "https://cdn-icons-png.flaticon.com/512/236/236832.png",
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
         "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
       id: 'zoshikanlu',
       password:'pass246',
       name: 'Zenobia Oshikanlu',
-      avatarURL: null,
+      avatarURL: "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png",
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
       },
@@ -128,7 +128,7 @@ let users = {
     },
   }
   
-  function generateUID () {
+  function generateQuestionID () {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
   }
   
@@ -144,29 +144,61 @@ let users = {
     })
   }
 
-  export function _saveVote ({id, authedUser, vote}) {
+  export function _saveVote (info) {
     return new Promise((res, rej) => {
-      if (!authedUser || !id) {
-        rej("Please provide authedUser, and answer");
-      }
-
+      let newQuestions = "";
       setTimeout(() => {
-        vote === 1
-          ? questions = {
-              ...questions,
-              [id]: {
-                ...questions[id].optionOne,
-                votes: questions[id].optionOne.votes.concat(authedUser),
-              }
-            }
-          : questions = {
-              ...questions,
-              [id]: {
-                ...questions[id].optionTwo,
-                votes: questions[id].optionTwo.votes.concat(authedUser),
-              }
-            }
-        res(true)
-      }, 500)
+        if (info.vote === 1) {
+          users[info.authedUser].answers = {
+            ...users[info.authedUser].answers,
+            [info.qID]: "optionOne"
+          }
+          questions[info.qID].optionOne.votes = [
+            ...questions[info.qID].optionOne.votes.concat([info.authedUser])
+          ]
+        } else {
+          users[info.authedUser].answers = {
+            ...users[info.authedUser].answers,
+            [info.qID]: "optionTwo"
+          }
+          questions[info.qID].optionTwo.votes = [
+            ...questions[info.qID].optionTwo.votes.concat([info.authedUser])
+          ]
+        }
+        newQuestions = questions;
+        res(newQuestions)
+      }, 1000)
+    })
+  }
+  export function _createPoll (info) {
+    return new Promise((res, rej) => {
+      let newQuestions = "";
+      setTimeout(() => {
+        info.id = generateQuestionID();
+        let qID = [info.id];
+
+        questions = {
+          ...questions,
+          [info.id]: {
+            id: info.id,
+            author: info.user,
+            timestamp: "time",
+            optionOne: {
+                votes: [],
+                text: info.textArea1
+            },
+            optionTwo: {
+                votes: [],
+                text: info.textArea2
+            },
+          }
+        }
+
+        users[info.user].questions = [
+          ...users[info.user].questions, 
+          ...qID];
+        newQuestions = questions;
+        res(newQuestions)
+      }, 1000)
     })
   }

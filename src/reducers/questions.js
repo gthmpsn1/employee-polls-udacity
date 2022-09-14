@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS, SUBMIT_VOTE } from "../actions/questions"; 
+import { RECEIVE_QUESTIONS, SUBMIT_VOTE, CREATE_POLL } from "../actions/questions"; 
 
 export default function questions (state = {}, action) {
     switch (action.type) {
@@ -8,25 +8,15 @@ export default function questions (state = {}, action) {
                 ...action.questions
             }
         case SUBMIT_VOTE:
-            let vote = action.vote;
-            if (vote === 1) {
-                return {
-                    ...state,
-                    [action.id]: {
-                        ...state[action.id].optionOne,
-                        votes: state[action.id].optionOne.votes.concat(action.authedUser)
-                    }
-                }
-            } else {
-                return {
-                    ...state,
-                    [action.id]: {
-                        ...state[action.id].optionTwo,
-                        votes: state[action.id].optionTwo.votes.concat(action.authedUser)
-                    }
-                }
+            return {
+                ...state,
+                ...action.info
             }
-            
+        case CREATE_POLL:
+            return {
+                ...state,
+                ...action.info
+            }
         default:
             return state;
     }

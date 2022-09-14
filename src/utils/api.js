@@ -2,6 +2,7 @@ import {
     _getUsers,
     _getQuestions,
     _saveVote,
+    _createPoll
   } from './_DATA.js'
   
   export function getInitialData () {
@@ -16,4 +17,8 @@ import {
 
   export function saveVote (info) {
     return _saveVote(info)
+  }
+
+  export function createPoll (info) {
+    return _createPoll(info)
   }

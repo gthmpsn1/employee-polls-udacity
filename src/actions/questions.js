@@ -1,7 +1,8 @@
-import { saveVote } from "../utils/api";
+import { saveVote, createPoll } from "../utils/api";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const SUBMIT_VOTE = "SUBMIT_VOTE";
+export const CREATE_POLL = "CREATE_POLL";
 
 export function receiveQuestions (questions) {
     return {
@@ -10,24 +11,30 @@ export function receiveQuestions (questions) {
     }
 }
 
-function vote ({id, authedUser, vote}) {
+function createVote (info) {
     return {
         type: SUBMIT_VOTE,
-        id,
-        authedUser,
-        vote
+        info
     }
 };
 
 export function handleVote(info) {
     return (dispatch) => {
-        dispatch(vote(info));
-
         return saveVote(info)
-            .catch((e) => {
-                console.warn("Error: ", e);
-                dispatch(vote(info));
-                alert("Error with voting.");
-            })
+            .then((newQuestions) => dispatch(createVote(newQuestions)))
+    }
+}
+
+function pollInfo (info) {
+    return {
+        type: CREATE_POLL,
+        info
+    }
+}
+
+export function handleCreatePoll(info) {
+    return (dispatch) => {
+        return createPoll(info)
+            .then((newQuestions) => dispatch(pollInfo(newQuestions)))
     }
 }
