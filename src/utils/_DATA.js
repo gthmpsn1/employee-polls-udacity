@@ -90,7 +90,7 @@ let users = {
     "loxhs1bqm25b708cmbf3g": {
       id: 'loxhs1bqm25b708cmbf3g',
       author: 'tylermcginnis',
-      timestamp: 1482579767190,
+      timestamp: 1649441940000,
       optionOne: {
         votes: [],
         text: 'have code reviews conducted by peers',
@@ -116,7 +116,7 @@ let users = {
     "xj352vofupe1dqz9emx13r": {
       id: 'xj352vofupe1dqz9emx13r',
       author: 'mtsamis',
-      timestamp: 1493579767190,
+      timestamp: 1653502740000,
       optionOne: {
         votes: ['mtsamis', 'zoshikanlu'],
         text: 'deploy to production once every two weeks',
@@ -182,7 +182,7 @@ let users = {
           [info.id]: {
             id: info.id,
             author: info.user,
-            timestamp: "time",
+            timestamp: Date.now(),
             optionOne: {
                 votes: [],
                 text: info.textArea1

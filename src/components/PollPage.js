@@ -15,21 +15,28 @@ const PollPage = (props) => {
 
     const [didVote1, setDidVote1] = useState({});
     const [didVote2, setDidVote2] = useState({});
+    const [optionOnePercentage, setOptionOnePercentage] = useState("");
+    const [optionTwoPercentage, setOptionTwoPercentage] = useState("");
 
     useEffect(() => {
         setDidVote1(question.optionOne.votes.includes(authedUser))
         setDidVote2(question.optionTwo.votes.includes(authedUser))
+        let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
+        setOptionOnePercentage((question.optionOne.votes.length/totalVotes*100).toFixed(1));
+        setOptionTwoPercentage((question.optionTwo.votes.length/totalVotes*100).toFixed(1));
     }, [])
 
     const castVoteForOne = (e) => {
         e.preventDefault();
         const vote = 1;
         recordVote(vote);
+        setDidVote1(true);
     }
     const castVoteForTwo = (e) => {
         e.preventDefault();
         const vote = 2;
         recordVote(vote);
+        setDidVote2(true);
     }
 
     const recordVote = (vote) => {
@@ -39,6 +46,7 @@ const PollPage = (props) => {
             qID: questionID.id
         }
         dispatch(handleVote(info))
+
     }
 
     return (
@@ -55,9 +63,9 @@ const PollPage = (props) => {
                         </label>
                         {status === "open"
                             ? didVote1 || didVote2
-                                ? <p>{`Votes: ${question.optionOne.votes.length}`}</p>
+                                ? <p>{`Votes: ${question.optionOne.votes.length} (${optionOnePercentage}%)`}</p>
                                 : <input onClick={castVoteForOne} defaultValue="Vote for Option #1" />
-                            : <p>{`Votes: ${question.optionOne.votes.length}`}</p>
+                            : <p>{`Votes: ${question.optionOne.votes.length} (${optionOnePercentage}%)`}</p>
                         }
                     </form>
                     <form>
@@ -66,9 +74,9 @@ const PollPage = (props) => {
                         </label>
                         {status === "open"
                             ? didVote1 || didVote2
-                                ? <p>{`Votes: ${question.optionTwo.votes.length}`}</p>
+                                ? <p>{`Votes: ${question.optionTwo.votes.length} (${optionTwoPercentage}%)`}</p>
                                 : <input onClick={castVoteForTwo} defaultValue="Vote for Option #2" />
-                            : <p>{`Votes: ${question.optionTwo.votes.length}`}</p>
+                            : <p>{`Votes: ${question.optionTwo.votes.length} (${optionTwoPercentage}%)`}</p>
                         }
                     </form> 
                 </div>

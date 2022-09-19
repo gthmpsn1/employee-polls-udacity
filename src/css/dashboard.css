@@ -12,9 +12,19 @@
     width: 70%;
     margin: 10px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .dashboard-container .dashboard .questions:nth-child(2) {
     width: 25%;
+}
+.dashboard-container .dashboard .questions:nth-child(2) p {
+    font-size: 1.25vh;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 2px;
+    margin-bottom: 0px;
 }
 .dashboard .questions .question-header {
     border-radius: 10px 10px 0px 0px;
@@ -22,6 +32,41 @@
     padding: 5px;
     margin: 5px;
     text-align: center;
+}
+.dashboard .questions .legend {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+.dashboard .questions .legend .legend-info {
+    text-align: center;
+    width: auto;
+    font-size: 1.25vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+}
+.dashboard .questions .legend .legend-info .legend-unanswered {
+    background-color: rgb(116, 116, 255);
+    color: white;
+    border: 2px solid rgb(3, 17, 121);
+    border-radius: 3px;
+    width: 1.5vh;
+    height: 1.5vh;
+    margin-right: 5px;
+}
+.dashboard .questions .legend .legend-info .legend-answered {
+    background-color: rgb(207, 207, 255);
+    color: rgb(66, 78, 173);
+    border: 2px solid rgb(117, 130, 228);
+    border-radius: 3px;
+    width: 1.5vh;
+    height: 1.5vh;
+    margin-right: 5px;
+    margin-left: 10px;
 }
 .dashboard .questions .question-grid {
     margin: 10px;

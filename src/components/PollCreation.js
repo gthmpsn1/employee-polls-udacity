@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import {useNavigate} from "react-router-dom";
 import { handleCreatePoll } from "../actions/questions";
 
 import Nav from "./Nav";
 
 const PollCreation = (props) => {
+    const navigate = useNavigate();
     const [textArea1, setTextArea1] = useState("");
     const [textArea2, setTextArea2] = useState("");
     const {user, dispatch} = props;
@@ -26,6 +28,7 @@ const PollCreation = (props) => {
         dispatch(handleCreatePoll(info));
         setTextArea1("");
         setTextArea2("");
+        navigate("/");
     } 
 
     return (
