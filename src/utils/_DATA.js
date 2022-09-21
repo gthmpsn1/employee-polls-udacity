@@ -178,7 +178,7 @@ let users = {
 
   export function formatPoll ({ textArea1, textArea2, user }) {
     return {
-      id: generateUID(),
+      id: generateQuestionID(),
       timestamp: Date.now(),
       author: user,
       optionOne: {
@@ -195,7 +195,9 @@ let users = {
   export async function _createPoll (info) {
     try {
       return await new Promise((res, rej) => {
-        rej(new Error("Poll info invalid, missing, and/or incomplete."))
+        if (!info.user || !info.textArea1 || !info.textArea2) {
+          rej(new Error("Poll info invalid, missing, and/or incomplete."))
+        }
 
         const newPoll = formatPoll(info)
 
@@ -207,10 +209,10 @@ let users = {
 
           users[info.user].questions = [
             ...users[info.user].questions,
-            ...qID
+            ...newPoll.id
           ]
 
-          res("newPoll")
+          res(questions)
         }, 1000)
       })
     } catch (error) {

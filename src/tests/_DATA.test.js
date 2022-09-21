@@ -23,7 +23,7 @@ describe("test how data interacts with database api", () => {
     expect(spy).toHaveBeenCalled();
   }, 1000);
 
-  it('will return an error if the data is empty for creating a new poll', async() => { 
+  it('will return a formatted poll object', async() => { 
     const testData= {
       textArea1: "some text for one",
       textArea2: "some text for two",
