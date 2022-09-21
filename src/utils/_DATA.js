@@ -146,6 +146,11 @@ let users = {
 
   export function _saveVote (info) {
     return new Promise((res, rej) => {
+      if (!info.vote || !info.authedUser || !info.qID) {
+        rej("Poll info invalid, missing, and/or incomplete.");
+        alert("Could not save poll. Please try again");
+      }
+
       let newQuestions = "";
       setTimeout(() => {
         if (info.vote === 1) {
@@ -170,35 +175,45 @@ let users = {
       }, 1000)
     })
   }
-  export function _createPoll (info) {
-    return new Promise((res, rej) => {
-      let newQuestions = "";
-      setTimeout(() => {
-        info.id = generateQuestionID();
-        let qID = [info.id];
 
-        questions = {
-          ...questions,
-          [info.id]: {
-            id: info.id,
-            author: info.user,
-            timestamp: Date.now(),
-            optionOne: {
-                votes: [],
-                text: info.textArea1
-            },
-            optionTwo: {
-                votes: [],
-                text: info.textArea2
-            },
+  export function formatPoll ({ textArea1, textArea2, user }) {
+    return {
+      id: generateUID(),
+      timestamp: Date.now(),
+      author: user,
+      optionOne: {
+        votes: [],
+        text: textArea1,
+      },
+      optionTwo: {
+        votes: [],
+        text: textArea2,
+      }
+    }
+  }
+
+  export async function _createPoll (info) {
+    try {
+      return await new Promise((res, rej) => {
+        rej(new Error("Poll info invalid, missing, and/or incomplete."))
+
+        const newPoll = formatPoll(info)
+
+        setTimeout(() => {
+          questions = {
+            ...questions,
+            [newPoll.id]: newPoll
           }
-        }
 
-        users[info.user].questions = [
-          ...users[info.user].questions, 
-          ...qID];
-        newQuestions = questions;
-        res(newQuestions)
-      }, 1000)
-    })
+          users[info.user].questions = [
+            ...users[info.user].questions,
+            ...qID
+          ]
+
+          res("newPoll")
+        }, 1000)
+      })
+    } catch (error) {
+      return alert(error)
+    }
   }

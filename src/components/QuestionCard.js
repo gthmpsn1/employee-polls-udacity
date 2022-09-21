@@ -9,9 +9,9 @@ const QuestionCard = ({question, status, author, hasVoted}) => {
                 <div>{author}</div>
                 <div>{timestamp.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})}</div>
                 <Link to={`/poll/${status}/${question.id}`} >
-                    {hasVoted ? <div className="show-has-voted-poll-btn">Show Poll</div> : <div className="show-poll-btn">Show Poll</div> }
+                    {hasVoted ? <div className="show-has-voted-poll-btn">Show Poll</div> : <div data-testid={'TEST'} className="show-poll-btn">Show Poll</div> }
                 </Link>
-                <div>{`Total Votes: ${question.optionOne.votes.length + question.optionTwo.votes.length}`}</div>
+                <div>{`Total Votes: ${question?.optionOne?.votes?.length + question?.optionTwo?.votes?.length}`}</div>
             </div>
         ) 
     } else {
@@ -20,7 +20,7 @@ const QuestionCard = ({question, status, author, hasVoted}) => {
                 <div>{author}</div>
                 <div>{timestamp.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})}</div>
                 <Link to={`/poll/${status}/${question.id}`} ><div className="show-closed-poll-btn">Show Poll</div></Link>
-                <div>{`Total Votes: ${question.optionOne.votes.length + question.optionTwo.votes.length}`}</div>
+                <div>{`Total Votes: ${question?.optionOne?.votes?.length + question?.optionTwo?.votes?.length}`}</div>
             </div>
         )
     }

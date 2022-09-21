@@ -39,10 +39,10 @@ const Login = (props) => {
             <h4>Log In</h4>
             <form className="login-form">
                 <label>User</label>
-                <input tpye="text" placeholder="User" value={userNameInput} onChange={setUNameQuery} />
+                <input data-testid={'test-authed-user'} type="text" placeholder="User" value={userNameInput} onChange={setUNameQuery} />
                 <label>Password</label>
-                <input type="password" placeholder="Password" value={passwordInput} onChange={setPasswordQuery} />
-                <input className="submit-btn" type="submit" onClick={attemptSignIn} disabled={userNameInput === "" || passwordInput === ""} />
+                <input data-testid={'test-password'} type="password" placeholder="Password" value={passwordInput} onChange={setPasswordQuery} />
+                <input data-testid={'test-login-button'} className="submit-btn" type="submit" onClick={attemptSignIn} disabled={userNameInput === "" || passwordInput === ""} />
             </form>
         </div>
     )

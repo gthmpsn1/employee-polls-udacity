@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Login will render login component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="login-container"
+      >
+        <h1>
+          Employee Polls
+        </h1>
+        <div
+          class="login-image"
+        />
+        <h4>
+          Log In
+        </h4>
+        <form
+          class="login-form"
+        >
+          <label>
+            User
+          </label>
+          <input
+            data-testid="test-authed-user"
+            placeholder="User"
+            type="text"
+            value=""
+          />
+          <label>
+            Password
+          </label>
+          <input
+            data-testid="test-password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <input
+            class="submit-btn"
+            data-testid="test-login-button"
+            disabled=""
+            type="submit"
+          />
+        </form>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="login-container"
+    >
+      <h1>
+        Employee Polls
+      </h1>
+      <div
+        class="login-image"
+      />
+      <h4>
+        Log In
+      </h4>
+      <form
+        class="login-form"
+      >
+        <label>
+          User
+        </label>
+        <input
+          data-testid="test-authed-user"
+          placeholder="User"
+          type="text"
+          value=""
+        />
+        <label>
+          Password
+        </label>
+        <input
+          data-testid="test-password"
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <input
+          class="submit-btn"
+          data-testid="test-login-button"
+          disabled=""
+          type="submit"
+        />
+      </form>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

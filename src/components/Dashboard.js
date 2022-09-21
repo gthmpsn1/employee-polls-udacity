@@ -18,7 +18,7 @@ const Dashboard = (props) => {
     }
 
     return (
-        <div className="dashboard-container">
+        <div data-testid={'test-dashboard-component'} className="dashboard-container">
             <Nav />
             <h2>Dashboard</h2>
             <div className="dashboard">
@@ -43,7 +43,7 @@ const Dashboard = (props) => {
                 </div>
                 <div className="questions">
                     <div className="question-header">Archived Polls</div>
-                    <p>Polls over than 120 days.</p>
+                    <p>Polls older than 120 days.</p>
                     <div className="question-grid">
                         {questions.map((question) => (
                             question.timestamp < expireTime

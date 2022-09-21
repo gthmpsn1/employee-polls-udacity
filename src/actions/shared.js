@@ -9,8 +9,10 @@ export function handleInitialData () {
             .then(({users, questions, id}) => {
                 dispatch(receiveUsers(users));
                 dispatch(receiveQuestions(questions));
-                //dispatch(setAuthedUser(null));
-                dispatch(setAuthedUser("sarahedo"));
+                //uncomment the line 13 and comment out line 15 to require an authed user to login
+                dispatch(setAuthedUser(null));
+                //uncomment the line 15 and comment out line 13 for testing and stay signed in as any user
+                //dispatch(setAuthedUser("sarahedo"));
             })
     }
 }

@@ -41,6 +41,7 @@ const PollCreation = (props) => {
                     <form>
                         <label>Option #1</label>
                         <textarea 
+                            data-testid={'test-textArea1'}
                             maxLength="250" 
                             onChange={(e) => updateTextArea1(e.target.value)} 
                             value={textArea1} 
@@ -49,13 +50,14 @@ const PollCreation = (props) => {
                         <p>{textArea1.length}/250</p>
                         <label>Option #2</label>
                         <textarea 
+                            data-testid={'test-textArea2'}
                             maxLength="250" 
                             onChange={(e) => updateTextArea2(e.target.value)} 
                             value={textArea2} 
                             placeholder="Enter option #2" >
                         </textarea>
                         <p>{textArea2.length}/250</p>
-                        <input type="submit" onClick={handleNewPoll} value="Creat Poll" disabled={textArea1 === "" || textArea2 === ""} />
+                        <input data-testid={'test-submit-poll-btn'} type="submit" onClick={handleNewPoll} value="Creat Poll" disabled={textArea1 === "" || textArea2 === ""} />
                     </form>
                 </div>
             </div>

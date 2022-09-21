@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {logout} from "../actions/authedUser";
 
 const Nav = (props) => {
-    const dispatch = props.dispatch;
-    const user = props.user;
-
+    const {user, dispatch} = props;
+    const navigate = useNavigate();
     const logoutUser = (e) => {
         let doLogout = null
         e.preventDefault();
         dispatch(logout(doLogout));
+        //navigate("/");
     } 
 
     return (
@@ -22,8 +22,8 @@ const Nav = (props) => {
                     <li><Link to="/new-poll">New Poll</Link></li>
                 </div>
                 <div>
-                    <li className="user-avatar" style={{backgroundImage: `url(${user.avatarURL})`}} ><Link to="/login" ></Link></li>
-                    <li><Link to="/login" onClick={logoutUser}>Logout, {user.name}</Link></li>
+                    <li className="user-avatar" style={{backgroundImage: `url(${user?.avatarURL})`}} ></li>
+                    <li><Link to="/" data-testid={'TEST'} onClick={logoutUser}>Logout, {user?.name}</Link></li>
                 </div>
             </ul>
         </nav>
