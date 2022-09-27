@@ -20,8 +20,13 @@ function createVote (info) {
 
 export function handleVote(info) {
     return (dispatch) => {
+        dispatch(createVote(info));
         return saveVote(info)
-            .then((newQuestions) => dispatch(createVote(newQuestions)))
+            .catch((e) => {
+                console.warn("Error in Question action: ", e);
+                dispatch(createVote(info));
+                alert("Error with saving voting.");
+            })
     }
 }
 

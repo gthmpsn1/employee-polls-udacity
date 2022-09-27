@@ -45,6 +45,7 @@ const PollPage = (props) => {
             vote: vote,
             qID: questionID.id
         }
+        //console.log(info)
         dispatch(handleVote(info))
 
     }

@@ -9,14 +9,14 @@
     margin-bottom: 5vw;
 }
 .login-container .login-image {
-    width: 30vw;
-    height: 30vw;
+    width: 200px;
+    height: 200px;
     background: url("https://thumbs.dreamstime.com/b/select-179491451.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border: 15px solid rgb(35, 10, 82);
     border-radius: 50%;
-    box-shadow: 0.2vw 0.2vw 3vw #7700ff97;
     margin-bottom: 5vw;
 }
 .login-container h4 {

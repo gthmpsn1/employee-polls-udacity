@@ -17,6 +17,9 @@ Object {
         <h4>
           Log In
         </h4>
+        <p>
+          (Hint: Use a valid username and the password can be anything.)
+        </p>
         <form
           class="login-form"
         >
@@ -61,6 +64,9 @@ Object {
       <h4>
         Log In
       </h4>
+      <p>
+        (Hint: Use a valid username and the password can be anything.)
+      </p>
       <form
         class="login-form"
       >

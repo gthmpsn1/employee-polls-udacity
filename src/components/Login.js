@@ -37,6 +37,7 @@ const Login = (props) => {
             <h1>Employee Polls</h1>
             <div className="login-image"></div>
             <h4>Log In</h4>
+            <p>{`(Hint: Use a valid username and the password can be anything.)`}</p>
             <form className="login-form">
                 <label>User</label>
                 <input data-testid={'test-authed-user'} type="text" placeholder="User" value={userNameInput} onChange={setUNameQuery} />
