@@ -29,8 +29,8 @@ const App = (props) => {
               <Route exact path="/" element={<Dashboard />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/new-poll" element={<PollCreation />} />
-              <Route path="/poll/:status/:id" element={<PollPage />} />
+              <Route path="/add" element={<PollCreation />} />
+              <Route path="/questions/:id" element={<PollPage />} />
             </Routes>)
           }
         </div>

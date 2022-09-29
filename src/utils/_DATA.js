@@ -149,37 +149,34 @@ export function _getQuestions() {
   });
 }
 
+const formatVote = ({vote, authedUser, qID}) => {
+  let qToUpdate = questions[qID];
+  let uToUpdate = users[authedUser];
+  if (vote === 1) {
+    qToUpdate.optionOne.votes = [...qToUpdate.optionOne.votes, authedUser]
+    uToUpdate.answers = {...uToUpdate.answers, [qID]: "optionOne"}
+  } else {
+    qToUpdate.optionTwo.votes = [...qToUpdate.optionTwo.votes, authedUser]
+    uToUpdate.answers = {...uToUpdate.answers, [qID]: "optionTwo"}
+  }
+  return {qToUpdate, uToUpdate};
+}
+
 export function _saveVote(info) {
   if (!info.vote || !info.authedUser || !info.qID) {
     return console.error("Invalid vote info. Try again.");
   }
-  let newQuestions = "";
   try {
-    if (info.vote === 1) {
-      users[info.authedUser].answers = {
-        ...users[info.authedUser].answers,
-        [info.qID]: "optionOne",
-      };
-      questions[info.qID].optionOne.votes = [
-        ...questions[info.qID].optionOne.votes.concat([info.authedUser]),
-      ];
-    } else {
-      users[info.authedUser].answers = {
-        ...users[info.authedUser].answers,
-        [info.qID]: "optionTwo",
-      };
-      questions[info.qID].optionTwo.votes = [
-        ...questions[info.qID].optionTwo.votes.concat([info.authedUser]),
-      ];
-    }
-    newQuestions = questions;
-    return(newQuestions);
+    const {qToUpdate, uToUpdate} = formatVote(info);
+    users = {...users, [info.authedUser]: uToUpdate}
+    questions = {...questions, [info.qID]: qToUpdate}
+    return (questions);
   } catch (error) {
     console.error(error);
   }
 }
 
-export function formatPoll({ textArea1, textArea2, user }) {
+const formatPoll = ({ textArea1, textArea2, user }) => {
   return {
     id: generateQuestionID(),
     timestamp: Date.now(),
@@ -201,13 +198,12 @@ export async function _createPoll(info) {
   }
   try {
     const newPoll = formatPoll(info);
-    console.log(newPoll, "This should not run")
     questions = {
       ...questions,
       [newPoll.id]: newPoll,
     };
 
-    users[info.user].questions = [...users[info.user].questions, ...newPoll.id];
+    users[info.user].questions = [...users[info.user].questions, newPoll.id];
     return questions;
   } catch (error) {
     console.error(error);

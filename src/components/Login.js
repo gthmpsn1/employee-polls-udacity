@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setAuthedUser} from "../actions/authedUser";
+import Nav from "./Nav";
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -34,16 +35,17 @@ const Login = (props) => {
 
     return (
         <div className="login-container">
+            <Nav />
             <h1>Employee Polls</h1>
             <div className="login-image"></div>
             <h4>Log In</h4>
             <p>{`(Hint: Use a valid username and the password can be anything.)`}</p>
             <form className="login-form">
                 <label>User</label>
-                <input data-testid={'test-authed-user'} type="text" placeholder="User" value={userNameInput} onChange={setUNameQuery} />
+                <input data-testid={'TEST-USER'} type="text" placeholder="User" value={userNameInput} onChange={setUNameQuery} />
                 <label>Password</label>
-                <input data-testid={'test-password'} type="password" placeholder="Password" value={passwordInput} onChange={setPasswordQuery} />
-                <input data-testid={'test-login-button'} className="submit-btn" type="submit" onClick={attemptSignIn} disabled={userNameInput === "" || passwordInput === ""} />
+                <input data-testid={'TEST-PASSWORD'} type="password" placeholder="Password" value={passwordInput} onChange={setPasswordQuery} />
+                <input data-testid={'TEST-LOGIN'} className="submit-btn" type="submit" onClick={attemptSignIn} disabled={userNameInput === "" || passwordInput === ""} />
             </form>
         </div>
     )

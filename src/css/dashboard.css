@@ -9,7 +9,7 @@
 .dashboard-container .dashboard .questions {
     border: 1.5px solid rgb(187, 187, 187);
     background-color: white;
-    width: 70%;
+    width: 100%;
     margin: 10px;
     border-radius: 10px;
     display: flex;

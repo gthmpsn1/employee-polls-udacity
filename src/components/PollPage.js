@@ -10,7 +10,6 @@ const PollPage = (props) => {
     const question = questions.find((q) => q.id === questionID.id)
     const authedUser = props.authedUser;
     const users = props.users;
-    const status = questionID.status;
     const dispatch = props.dispatch;
 
     const [didVote1, setDidVote1] = useState({});
@@ -24,7 +23,7 @@ const PollPage = (props) => {
         let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
         setOptionOnePercentage((question.optionOne.votes.length/totalVotes*100).toFixed(1));
         setOptionTwoPercentage((question.optionTwo.votes.length/totalVotes*100).toFixed(1));
-    }, [])
+    }, [didVote1, didVote2])
 
     const castVoteForOne = (e) => {
         e.preventDefault();
@@ -45,9 +44,7 @@ const PollPage = (props) => {
             vote: vote,
             qID: questionID.id
         }
-        //console.log(info)
         dispatch(handleVote(info))
-
     }
 
     return (
@@ -58,35 +55,32 @@ const PollPage = (props) => {
                 <div className="poll-owner-image" style={{backgroundImage: `url(${users[question.author].avatarURL})`}}></div>
                 <h3>Would you rather...</h3>
                 <div className="option-container">
-                    <form>
+                    <form className={didVote1 === true ? "highlight-vote" : "poll-option"}>
+                        <h2>Option #1</h2>
                         <label>
-                        <div>{question.optionOne.text}</div>
+                            <div>{question.optionOne.text}</div>
                         </label>
-                        {status === "open"
-                            ? didVote1 || didVote2
-                                ? <p>{`Votes: ${question.optionOne.votes.length} (${optionOnePercentage}%)`}</p>
-                                : <input onClick={castVoteForOne} defaultValue="Vote for Option #1" />
-                            : <p>{`Votes: ${question.optionOne.votes.length} (${optionOnePercentage}%)`}</p>
-                        }
+                            {didVote1 || didVote2
+                                ? <div>
+                                    <p>{`Votes: ${question.optionOne.votes.length} (${optionOnePercentage}%)`}</p>
+                                </div>
+                                : <input onClick={castVoteForOne} defaultValue="Vote for Option #1" />}
                     </form>
-                    <form>
+                    <form className={didVote2 === true ? "highlight-vote" : "poll-option"}>
+                        <h2>Option #2</h2>
                         <label>
                             <div>{question.optionTwo.text}</div>
                         </label>
-                        {status === "open"
-                            ? didVote1 || didVote2
-                                ? <p>{`Votes: ${question.optionTwo.votes.length} (${optionTwoPercentage}%)`}</p>
+                            {didVote1 || didVote2
+                                ? <div>
+                                    <p>{`Votes: ${question.optionTwo.votes.length} (${optionTwoPercentage}%)`}</p>
+                                </div>
                                 : <input onClick={castVoteForTwo} defaultValue="Vote for Option #2" />
-                            : <p>{`Votes: ${question.optionTwo.votes.length} (${optionTwoPercentage}%)`}</p>
-                        }
+                            }
                     </form> 
                 </div>
                 {didVote1 || didVote2
                     ? didVote1 ? <p>You voted for Option #1</p> : <p>You voted for Option #2</p>
-                    : null
-                }
-                {status === "closed"
-                    ? <div>Poll closed for voting.</div>
                     : null
                 }
             </div>

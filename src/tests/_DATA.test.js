@@ -18,13 +18,13 @@ describe("test how data interacts with database api", () => {
     spy = jest.spyOn(global.console, "error");
   });     
 
-  it('will return an error if the data is invalid when creating a new poll', async() => { 
+  it('when creating question, will return an error when invalid data is passed when creating a new poll', async() => { 
     const testInvalidData= {};
     const response = await _createPoll(testInvalidData);
     expect(spy).toHaveBeenCalled();
   }, 1000);
 
-  it('will return the the submitted data after it has been filtered from questions data', async() => { 
+  it('when creating question, will return the the submitted data after it has been filtered from questions data', async() => { 
     const testData= {
       textArea1: "some text for one",
       textArea2: "some text for two",
@@ -36,19 +36,19 @@ describe("test how data interacts with database api", () => {
     expect(filteredResponse.length).toBe(1);
   }, 1000);
 
-  it('will return an error if the data is invalid voting', async() => { 
+  it('when voting, will return an error if the voting data is invalid or missing', async() => { 
     const testInvalidData = {};
     const response = await _saveVote(testInvalidData);
     expect(spy).toHaveBeenCalled();
   }, 1000);
 
-  it('will return true if the voting data is valid', async() => { 
-    const testInvalidData = {
+  it('when voting, will return true if the voting data is valid', async() => { 
+    const testValidData = {
       vote: 1,
       authedUser: 'sarahedo',
       qID: 'vthrdm985a262al8qx3do'
     };
-    const response = await _saveVote(testInvalidData);
-    expect(response["vthrdm985a262al8qx3do"].optionOne.votes.includes(testInvalidData.authedUser)).toBeTruthy();
+    const response = await _saveVote(testValidData);
+    expect(response["vthrdm985a262al8qx3do"].optionOne.votes.includes(testValidData.authedUser)).toBeTruthy();
   }, 1000);
 });

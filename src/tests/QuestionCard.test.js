@@ -1,13 +1,21 @@
 /**
  * @jest-environment jsdom
  */
-import React from "react";
-import QuestionCard from "../components/QuestionCard";
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 
-describe("Render the QuestionCard component and expect no errors on Mount and Render in console", () => {
+ import { render, screen, fireEvent } from "@testing-library/react";
+ import middleware from "../middleware";
+ import reducer from "../reducers";
+ import { createStore } from "redux";
+ import { Provider } from "react-redux";
+ import { MemoryRouter } from "react-router-dom";
+ import "@testing-library/jest-dom";
+ import QuestionCard from "../components/QuestionCard";
+ 
+ describe("Render the QuestionCard component and expect no errors on Mount and Render in console", () => {
+  let mockStore = "";
+  let view = ""; 
+  const spy = jest.spyOn(global.console, "error");
+
   const testQuestionObject = {
     "8xf0y6ziyjabvozdd253nd": {
       id: "8xf0y6ziyjabvozdd253nd",
@@ -24,66 +32,48 @@ describe("Render the QuestionCard component and expect no errors on Mount and Re
     },
   };
 
-  const spy = jest.spyOn(global.console, "error");
+  const testAuthor = "Dr. Test Author"
+  const testAuthedUser = "tylermcginnis"
 
-  it("status is 'open' & hasVoted is true", () => {
-    render(
-        <Router>
-          <QuestionCard
-            question={testQuestionObject}
-            status={"open"}
-            author={testQuestionObject.author}
-            hasVoted={true}
-          />
-        </Router>
-      );
-    expect(spy).not.toHaveBeenCalled();
+  beforeEach(() => {
+    mockStore = createStore(reducer, middleware);
   });
-  
-  it("status is 'open' & hasVoted is false", () => {
-    render(
-        <Router>
-          <QuestionCard
-            question={testQuestionObject}
-            status={"open"}
-            author={testQuestionObject.author}
-            hasVoted={false}
-          />
-        </Router>
-      );
-    expect(spy).not.toHaveBeenCalled();
-    const button = screen.queryByTestId('TEST');
-    expect(button).toBeInTheDocument();
-    fireEvent.click(button);
-    const userUrl = window.location.pathname;
-    expect(userUrl).toEqual(`/poll/${"open"}/${testQuestionObject.id}`)
+ 
+  it("will match the snapshot", async () => {
+    view = render(
+      <MemoryRouter>
+        <Provider store={ mockStore }>
+          <QuestionCard question={testQuestionObject} author={testAuthor} authedUser={testAuthedUser}/>
+        </Provider>
+      </MemoryRouter>
+    );
+
+    expect(view).toMatchSnapshot();
   });
 
-  it("status is 'closed' & hasVoted is true", () => {
-    render(
-        <Router>
-          <QuestionCard
-            question={testQuestionObject}
-            status={"closed"}
-            author={testQuestionObject.author}
-            hasVoted={true}
-          />
-        </Router>
-      );
+  it("when a valid poll is passed in, there should be no errors", () => {
+    view = render(
+      <MemoryRouter>
+        <Provider store={ mockStore }>
+          <QuestionCard question={testQuestionObject} author={testAuthor} authedUser={testAuthedUser}/>
+        </Provider>
+      </MemoryRouter>
+    );
+
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it("status is 'closed' & hasVoted is false", () => {
-    render(
-        <Router>
-          <QuestionCard
-            question={testQuestionObject}
-            status={"closed"}
-            author={testQuestionObject.author}
-            hasVoted={false}
-          />
-        </Router>
-      );
+  it("when a valid poll is passed the 'show poll' button is shown", () => {
+    view = render(
+      <MemoryRouter>
+        <Provider store={ mockStore }>``
+          <QuestionCard question={testQuestionObject} author={testAuthor} authedUser={testAuthedUser}/>
+        </Provider>
+      </MemoryRouter>
+    );
+    const testShowPollBtn = screen.queryByTestId("TEST-SHOW-POLL");
+    expect(testShowPollBtn).toBeInTheDocument();
     expect(spy).not.toHaveBeenCalled();
   });
-});
+
+ });

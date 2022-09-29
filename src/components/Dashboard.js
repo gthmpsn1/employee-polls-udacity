@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import Nav from "./Nav";
 import QuestionCard from "./QuestionCard";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const Dashboard = (props) => {
-    const expireTime = (Date.now() - 10368000000);
     const questions = Object.values(props.questions);
     const users = props.users;
     questions.sort((a,b) => b.timestamp - a.timestamp);
@@ -23,33 +23,30 @@ const Dashboard = (props) => {
             <h2>Dashboard</h2>
             <div className="dashboard">
                 <div className="questions">
-                    <div className="question-header">Current Polls</div>
-                    <div className="legend">
-                            <div className="legend-info">
-                                <div className="legend-unanswered"></div>
-                                <div className="legend-item-name">= NOT VOTED</div>
+                    <Tabs>
+                        <TabList>
+                            <Tab>Unanswered</Tab>
+                            <Tab>Answered</Tab>
+                        </TabList>
+                        <TabPanel>
+                            <h2>Unanswered Polls</h2>
+                            <div className="question-grid">
+                                {questions.map((question) => (
+                                    !hasVoted(question)
+                                        && <QuestionCard key={question.id} question={question} author={users[question.author].name} authedUser={authedUser} />
+                                ))}
                             </div>
-                            <div className="legend-info">
-                                <div className="legend-answered"></div>
-                                <div className="legend-item-name">= VOTED</div>
+                        </TabPanel>
+                        <TabPanel>
+                            <h2>Answered Polls</h2>
+                            <div className="question-grid">
+                                {questions.map((question) => (
+                                    hasVoted(question)
+                                        && <QuestionCard key={question.id} question={question} author={users[question.author].name} authedUser={authedUser} />
+                                ))}
                             </div>
-                        </div>
-                    <div className="question-grid">
-                        {questions.map((question) => (
-                            question.timestamp > expireTime
-                                && <QuestionCard key={question.id} hasVoted={hasVoted(question)} question={question} status={"open"} author={users[question.author].name} authedUser={authedUser} />
-                        ))}
-                    </div>
-                </div>
-                <div className="questions">
-                    <div className="question-header">Archived Polls</div>
-                    <p>Polls older than 120 days.</p>
-                    <div className="question-grid">
-                        {questions.map((question) => (
-                            question.timestamp < expireTime
-                                && <QuestionCard key={question.id} hasVoted={hasVoted(question)} question={question} status={"closed"} author={users[question.author].name} />
-                        ))}
-                    </div>
+                        </TabPanel>
+                    </Tabs>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Login will render login component 1`] = `
+exports[`Render the Login component and expect no errors on Mount and Render in console will match the snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -8,6 +8,44 @@ Object {
       <div
         class="login-container"
       >
+        <nav
+          class="nav"
+        >
+          <ul>
+            <div>
+              <li>
+                <a
+                  href="/"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/leaderboard"
+                >
+                  Leaderboard
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/add"
+                >
+                  New Poll
+                </a>
+              </li>
+            </div>
+            <div>
+              <li>
+                <a
+                  href="/"
+                >
+                  Please Login
+                </a>
+              </li>
+            </div>
+          </ul>
+        </nav>
         <h1>
           Employee Polls
         </h1>
@@ -27,7 +65,7 @@ Object {
             User
           </label>
           <input
-            data-testid="test-authed-user"
+            data-testid="TEST-USER"
             placeholder="User"
             type="text"
             value=""
@@ -36,14 +74,14 @@ Object {
             Password
           </label>
           <input
-            data-testid="test-password"
+            data-testid="TEST-PASSWORD"
             placeholder="Password"
             type="password"
             value=""
           />
           <input
             class="submit-btn"
-            data-testid="test-login-button"
+            data-testid="TEST-LOGIN"
             disabled=""
             type="submit"
           />
@@ -55,6 +93,44 @@ Object {
     <div
       class="login-container"
     >
+      <nav
+        class="nav"
+      >
+        <ul>
+          <div>
+            <li>
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/leaderboard"
+              >
+                Leaderboard
+              </a>
+            </li>
+            <li>
+              <a
+                href="/add"
+              >
+                New Poll
+              </a>
+            </li>
+          </div>
+          <div>
+            <li>
+              <a
+                href="/"
+              >
+                Please Login
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
       <h1>
         Employee Polls
       </h1>
@@ -74,7 +150,7 @@ Object {
           User
         </label>
         <input
-          data-testid="test-authed-user"
+          data-testid="TEST-USER"
           placeholder="User"
           type="text"
           value=""
@@ -83,14 +159,14 @@ Object {
           Password
         </label>
         <input
-          data-testid="test-password"
+          data-testid="TEST-PASSWORD"
           placeholder="Password"
           type="password"
           value=""
         />
         <input
           class="submit-btn"
-          data-testid="test-login-button"
+          data-testid="TEST-LOGIN"
           disabled=""
           type="submit"
         />

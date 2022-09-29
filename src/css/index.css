@@ -5,6 +5,7 @@
 @import "./leaderboard.css";
 @import "./dashboard.css";
 @import "./questionCard.css";
+@import 'react-tabs/style/react-tabs.css';
 
 body {
     background-color: rgba(0, 162, 255, 0.079);

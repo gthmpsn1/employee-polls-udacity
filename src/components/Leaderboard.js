@@ -7,7 +7,6 @@ const Leaderboard = (props) => {
     const usersArray = Object.values(props.users);
     let sortedScores = [];
     const [sortedScoresState, setSortedScoresState] = useState([]);
-    console.log(users, sortedScoresState);
 
     const sortScores = () => {
         let total = "";

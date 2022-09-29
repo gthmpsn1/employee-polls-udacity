@@ -12,12 +12,6 @@ Object {
         <nav
           class="nav"
         >
-          <h1>
-            Employee Polls 
-            <span>
-              by Gabriel Thompson
-            </span>
-          </h1>
           <ul>
             <div>
               <li>
@@ -36,23 +30,18 @@ Object {
               </li>
               <li>
                 <a
-                  href="/new-poll"
+                  href="/add"
                 >
                   New Poll
                 </a>
               </li>
             </div>
             <div>
-              <li
-                class="user-avatar"
-                style="background-image: url(undefined);"
-              />
               <li>
                 <a
-                  data-testid="TEST"
                   href="/"
                 >
-                  Logout, 
+                  Please Login
                 </a>
               </li>
             </div>
@@ -68,56 +57,57 @@ Object {
             class="questions"
           >
             <div
-              class="question-header"
+              class="react-tabs"
+              data-rttabs="true"
             >
-              Current Polls
-            </div>
-            <div
-              class="legend"
-            >
-              <div
-                class="legend-info"
+              <ul
+                class="react-tabs__tab-list"
+                role="tablist"
               >
-                <div
-                  class="legend-unanswered"
-                />
-                <div
-                  class="legend-item-name"
+                <li
+                  aria-controls="panel:r0:0"
+                  aria-disabled="false"
+                  aria-selected="true"
+                  class="react-tabs__tab react-tabs__tab--selected"
+                  data-rttab="true"
+                  id="tab:r0:0"
+                  role="tab"
+                  tabindex="0"
                 >
-                  = NOT VOTED
-                </div>
+                  Unanswered
+                </li>
+                <li
+                  aria-controls="panel:r0:1"
+                  aria-disabled="false"
+                  aria-selected="false"
+                  class="react-tabs__tab"
+                  data-rttab="true"
+                  id="tab:r0:1"
+                  role="tab"
+                >
+                  Answered
+                </li>
+              </ul>
+              <div
+                aria-labelledby="tab:r0:0"
+                class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+                id="panel:r0:0"
+                role="tabpanel"
+              >
+                <h2>
+                  Unanswered Polls
+                </h2>
+                <div
+                  class="question-grid"
+                />
               </div>
               <div
-                class="legend-info"
-              >
-                <div
-                  class="legend-answered"
-                />
-                <div
-                  class="legend-item-name"
-                >
-                  = VOTED
-                </div>
-              </div>
+                aria-labelledby="tab:r0:1"
+                class="react-tabs__tab-panel"
+                id="panel:r0:1"
+                role="tabpanel"
+              />
             </div>
-            <div
-              class="question-grid"
-            />
-          </div>
-          <div
-            class="questions"
-          >
-            <div
-              class="question-header"
-            >
-              Archived Polls
-            </div>
-            <p>
-              Polls older than 120 days.
-            </p>
-            <div
-              class="question-grid"
-            />
           </div>
         </div>
       </div>
@@ -131,12 +121,6 @@ Object {
       <nav
         class="nav"
       >
-        <h1>
-          Employee Polls 
-          <span>
-            by Gabriel Thompson
-          </span>
-        </h1>
         <ul>
           <div>
             <li>
@@ -155,23 +139,18 @@ Object {
             </li>
             <li>
               <a
-                href="/new-poll"
+                href="/add"
               >
                 New Poll
               </a>
             </li>
           </div>
           <div>
-            <li
-              class="user-avatar"
-              style="background-image: url(undefined);"
-            />
             <li>
               <a
-                data-testid="TEST"
                 href="/"
               >
-                Logout, 
+                Please Login
               </a>
             </li>
           </div>
@@ -187,56 +166,57 @@ Object {
           class="questions"
         >
           <div
-            class="question-header"
+            class="react-tabs"
+            data-rttabs="true"
           >
-            Current Polls
-          </div>
-          <div
-            class="legend"
-          >
-            <div
-              class="legend-info"
+            <ul
+              class="react-tabs__tab-list"
+              role="tablist"
             >
-              <div
-                class="legend-unanswered"
-              />
-              <div
-                class="legend-item-name"
+              <li
+                aria-controls="panel:r0:0"
+                aria-disabled="false"
+                aria-selected="true"
+                class="react-tabs__tab react-tabs__tab--selected"
+                data-rttab="true"
+                id="tab:r0:0"
+                role="tab"
+                tabindex="0"
               >
-                = NOT VOTED
-              </div>
+                Unanswered
+              </li>
+              <li
+                aria-controls="panel:r0:1"
+                aria-disabled="false"
+                aria-selected="false"
+                class="react-tabs__tab"
+                data-rttab="true"
+                id="tab:r0:1"
+                role="tab"
+              >
+                Answered
+              </li>
+            </ul>
+            <div
+              aria-labelledby="tab:r0:0"
+              class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+              id="panel:r0:0"
+              role="tabpanel"
+            >
+              <h2>
+                Unanswered Polls
+              </h2>
+              <div
+                class="question-grid"
+              />
             </div>
             <div
-              class="legend-info"
-            >
-              <div
-                class="legend-answered"
-              />
-              <div
-                class="legend-item-name"
-              >
-                = VOTED
-              </div>
-            </div>
+              aria-labelledby="tab:r0:1"
+              class="react-tabs__tab-panel"
+              id="panel:r0:1"
+              role="tabpanel"
+            />
           </div>
-          <div
-            class="question-grid"
-          />
-        </div>
-        <div
-          class="questions"
-        >
-          <div
-            class="question-header"
-          >
-            Archived Polls
-          </div>
-          <p>
-            Polls older than 120 days.
-          </p>
-          <div
-            class="question-grid"
-          />
         </div>
       </div>
     </div>
