@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
 import { handleCreatePoll } from "../actions/questions";
 
-import Nav from "./Nav";
-
 const PollCreation = (props) => {
     const navigate = useNavigate();
     const [textArea1, setTextArea1] = useState("");
@@ -33,7 +31,6 @@ const PollCreation = (props) => {
 
     return (
         <div className="poll-creation-container">
-            <Nav />
             <div className="poll-creation-info">
                 <h4>Create Your Own Poll</h4>
                 <h3>Would you rather...</h3>

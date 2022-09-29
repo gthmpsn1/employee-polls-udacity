@@ -8,6 +8,7 @@ import Login from "./Login";
 import PollCreation from "./PollCreation";
 import PollPage from "./PollPage";
 import NotFound from "./NotFound";
+import Nav from "./Nav";
 
 const App = (props) => {
   const isLoggedIn = props.isLoggedIn;
@@ -19,13 +20,14 @@ const App = (props) => {
   return (
       <Fragment>
         <div className="app-container">
+          <Nav />
           {isLoggedIn !== true 
             ? (<Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>)
             : (<Routes>
-              <Route path="x" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
               <Route exact path="/" element={<Dashboard />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/login" element={<Login />} />

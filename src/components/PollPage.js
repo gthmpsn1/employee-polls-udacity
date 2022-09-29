@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { handleVote } from "../actions/questions";
 import { useState, useEffect } from "react";
-import Nav from "./Nav";
 
 const PollPage = (props) => {
     const questionID = useParams();
@@ -49,7 +48,6 @@ const PollPage = (props) => {
 
     return (
         <div className="poll-page-container">
-            <Nav />
             <div className="poll-info">
                 <h5>Poll by {users[question.author].name}</h5>
                 <div className="poll-owner-image" style={{backgroundImage: `url(${users[question.author].avatarURL})`}}></div>

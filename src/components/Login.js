@@ -2,7 +2,6 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setAuthedUser} from "../actions/authedUser";
-import Nav from "./Nav";
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -35,7 +34,6 @@ const Login = (props) => {
 
     return (
         <div className="login-container">
-            <Nav />
             <h1>Employee Polls</h1>
             <div className="login-image"></div>
             <h4>Log In</h4>

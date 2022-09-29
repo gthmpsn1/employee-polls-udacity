@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import Nav from "./Nav";
 import QuestionCard from "./QuestionCard";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
@@ -19,7 +18,6 @@ const Dashboard = (props) => {
 
     return (
         <div data-testid={'test-dashboard-component'} className="dashboard-container">
-            <Nav />
             <h2>Dashboard</h2>
             <div className="dashboard">
                 <div className="questions">

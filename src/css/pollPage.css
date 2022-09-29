@@ -7,8 +7,8 @@
     align-items: center;
 }
 .poll-info .poll-owner-image {
-    width: 20vw;
-    height: 20vw;
+    width: 10vw;
+    height: 10vw;
     background: url("https://airnfts.s3.amazonaws.com/profile-images/0xD9c4216cFE7c70344f80035B0bf5FBE01AA69d37_1619305985184.png");
     background-position: center;
     background-repeat: no-repeat;

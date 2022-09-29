@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Nav from "./Nav";
 
 const Leaderboard = (props) => {
     const users = props.users;
@@ -33,7 +32,6 @@ const Leaderboard = (props) => {
 
     return (
         <div className="leaderboard-container">
-            <Nav />
             <div className="leaderboard">
                 <h2>Leaderboard</h2>
                 <div className="header">
